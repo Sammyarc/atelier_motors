@@ -1,0 +1,154 @@
+/* Readable type and an expandable collection, at every viewport size. */
+:root{--muted:#50584b}
+.nav-link,.visit-button{font-size:14px;font-weight:600}
+.nav-link span{font-size:12px}
+.showroom{min-height:760px;height:calc(100svh - 200px)}
+.scene-heading h1{font-size:clamp(32px,3vw,44px);font-weight:760;letter-spacing:-.04em}
+.scene-heading>p:last-child{font-size:15px;line-height:1.6}
+.eyebrow,.tiny-label{font-size:12px;font-weight:650;letter-spacing:.08em}
+.model-title{top:160px}
+.model-title>span:first-child{font-size:12px;font-weight:650}
+.model-title>span:last-child{font-weight:750;letter-spacing:-.065em}
+.edge-panel{top:34%;width:210px}
+.vehicle-info h2{font-size:36px;font-weight:760;letter-spacing:-.035em;line-height:1.12}
+.vehicle-info>p{font-size:14px;line-height:1.65}
+.text-button{font-size:14px;font-weight:600;min-height:40px;margin-top:14px}
+.finish-block{margin-top:24px}
+.swatches{gap:12px;margin:16px 0}
+.swatch{width:27px;height:27px}
+.finish-name{font-size:12px;line-height:1.6}
+.view-controls{width:190px}
+.view-switch{margin:12px 0}
+.view-button{font-size:14px;min-height:47px;font-weight:600}
+.setting-button{font-size:13px;min-height:42px}
+.utilities{padding-top:12px;margin-top:10px}
+.utilities .icon-button{width:40px;height:40px}
+.help-button{font-size:16px}
+.camera-strip>.tiny-label{font-size:11px}
+.angle-button{font-size:13px;font-weight:550;min-height:38px}
+.scene-caption{font-size:13px}
+.zoom-controls>span{font-size:11px}
+.zoom-controls .icon-button{width:36px;height:36px}
+.scene-number{font-size:11px;letter-spacing:.06em}
+.collection-dock{display:block;padding-top:30px;padding-bottom:30px}
+.collection-intro{display:block;margin-bottom:24px}
+.collection-intro h2{font-size:30px;font-weight:750;letter-spacing:-.035em;margin:8px 0}
+.collection-intro>.tiny-label{font-size:12px}
+.collection-intro>span:last-child{font-size:14px}
+.car-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.car-card{display:grid;grid-template-columns:1fr auto;gap:12px;padding:18px;align-content:start}
+.car-thumbnail{grid-column:1/-1;width:100%;height:100px}
+.car-thumbnail img{width:100%;height:100%;object-fit:contain}
+.car-card-text{white-space:normal;gap:7px}
+.car-card-text .tiny-label{font-size:11px;font-weight:650}
+.car-card-text strong{font-size:17px;font-weight:750;line-height:1.3}
+.car-card-text>span:last-child{font-size:13px;line-height:1.5}
+.card-select{align-self:center}
+footer{font-size:11px;line-height:1.7;gap:20px}
+footer button{font-size:12px;font-weight:600}
+dialog h2{font-weight:750;letter-spacing:-.035em}
+dialog p{font-size:15px}
+dialog .dialog-note{font-size:13px;color:#50584b}
+dialog dl>div{font-size:14px}
+dialog dt,dialog .help-list dd{color:#50584b}
+.pill{font-size:14px;font-weight:600}
+.scene-loading{font-size:14px}
+.scene-error h2{font-weight:750}
+.scene-error p{font-size:14px}
+.toast{font-size:14px}
+.showroom.interior .vehicle-info{width:240px}
+.showroom.interior .view-controls{width:220px}
+.showroom.night{--muted:#c1c9b9}
+@media(max-width:1200px){
+  .camera-strip>.tiny-label,.scene-number{display:none}
+  .car-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .car-card{grid-template-columns:120px 1fr auto;align-items:center}
+  .car-thumbnail{grid-column:auto;width:120px;height:80px}
+  .edge-panel{width:185px}
+  .view-controls{width:175px}
+  .vehicle-info h2{font-size:32px}
+  .showroom.interior .vehicle-info{width:215px}
+  .showroom.interior .view-controls{width:205px}
+}
+@media(max-width:800px){
+  .showroom{height:990px;min-height:0}
+  .scene-heading h1{font-size:36px}
+  .scene-heading{padding:0 20px}
+  .edge-panel{top:600px;width:240px}
+  .view-controls{width:200px}
+  .vehicle-info h2{font-size:32px;max-width:none}
+  .vehicle-info>p{max-width:none}
+  .camera-strip{top:535px;bottom:auto}
+  .scene-caption{top:493px;bottom:auto}
+  .zoom-controls{top:455px;bottom:auto}
+  .collection-dock{padding:30px 25px}
+  .collection-intro{display:block}
+  .collection-intro h2{margin:8px 0}
+  .car-card{grid-template-columns:1fr auto}
+  .car-thumbnail{grid-column:1/-1;width:100%;height:90px}
+  .showroom.interior .edge-panel{top:600px}
+  .showroom.interior .vehicle-info{width:240px}
+  .showroom.interior .view-controls{width:200px}
+  .showroom.interior .scene-caption{top:490px}
+}
+@media(max-width:540px){
+  .site-header{gap:20px}
+  .nav-link{font-size:13px}
+  .scene-heading h1{font-size:30px}
+  .scene-heading>p:last-child{font-size:14px}
+  .eyebrow{font-size:11px}
+  .showroom{height:1200px}
+  .model-title{top:160px}
+  .model-title>span:first-child{font-size:12px}
+  .model-title>span:last-child{font-size:clamp(64px,18vw,98px)}
+  .camera-strip{top:485px;bottom:auto;gap:0;padding:4px}
+  .angle-button{font-size:12px;padding:8px 12px}
+  .scene-caption{top:444px;font-size:12px;width:calc(100% - 32px);justify-content:center;white-space:normal;text-align:center}
+  .scene-caption .orbit-symbol{display:none}
+  .zoom-controls{top:405px;right:20px}
+  .zoom-controls .icon-button{width:34px;height:34px}
+  .edge-panel,.showroom.interior .edge-panel{left:22px;right:22px;width:auto}
+  .vehicle-info,.showroom.interior .vehicle-info{top:560px;width:auto}
+  .vehicle-info h2{font-size:32px;max-width:none;margin:10px 0}
+  .vehicle-info h2 br,.vehicle-info>p br{display:none}
+  .vehicle-info>p{font-size:14px;max-width:none}
+  .vehicle-info .text-button{margin-top:8px}
+  .finish-block{margin-top:18px}
+  .swatches{margin:14px 0}
+  .swatch{width:28px;height:28px}
+  .finish-name{font-size:13px}
+  .view-controls,.showroom.interior .view-controls{top:855px;width:auto}
+  .view-switch{flex-direction:row;gap:8px}
+  .view-button{flex:1;font-size:14px;padding:12px;gap:8px}
+  .setting-button{font-size:14px;min-height:42px}
+  .utilities{margin-top:10px;padding-top:12px;gap:10px}
+  .utilities .icon-button{width:40px;height:40px}
+  .tiny-label{font-size:12px}
+  .showroom.interior{height:1100px}
+  .showroom.interior .view-controls{top:745px}
+  .showroom.interior .scene-caption{top:438px}
+  .collection-dock{padding:28px 22px}
+  .collection-intro h2{font-size:29px}
+  .car-options{grid-template-columns:1fr;gap:12px}
+  .car-card{grid-template-columns:90px 1fr auto;padding:16px;gap:12px;align-items:center}
+  .car-thumbnail{grid-column:auto;width:90px;height:70px}
+  .car-card-text strong{font-size:16px}
+  .car-card-text .tiny-label{font-size:11px}
+  .car-card-text>span:last-child{font-size:12px}
+  footer{font-size:11px;padding:12px 22px 25px}
+  dialog h2{font-size:32px}
+}
+@media(max-width:360px){
+  .scene-heading h1{font-size:27px}
+  .edge-panel,.showroom.interior .edge-panel{left:18px;right:18px}
+  .vehicle-info h2{font-size:30px}
+  .car-card{grid-template-columns:70px 1fr auto;gap:10px;padding:14px}
+  .car-thumbnail{width:70px}
+}
+/* Let longer model names and descriptions determine panel height on phones. */
+@media(max-width:540px){
+  .showroom,.showroom.interior{height:auto;padding-top:560px;padding-bottom:32px}
+  .edge-panel,.showroom.interior .edge-panel{position:relative;top:auto;left:auto;right:auto;margin:0 22px;width:auto}
+  .view-controls,.showroom.interior .view-controls{top:auto;margin-top:30px}
+}
+@media(max-width:360px){.edge-panel,.showroom.interior .edge-panel{margin-left:18px;margin-right:18px}}

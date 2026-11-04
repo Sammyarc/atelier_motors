@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eae9e2">
+  <meta name="description" content="An open invitation to explore. Step inside Atelier Motor, an interactive 3D car gallery. Choose your car, find your finish, and take the driver's seat.">
+  <title>Atelier Motor — A different perspective.</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/dm-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="refinements.css">
+  <script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/addons/"}}</script>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/velocity.min.js" defer></script>
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-orbit" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/><path d="M9 4c-2 4-1 13 3 16M15 4c3 4 3 11 1 14"/></symbol>
+    <symbol id="i-seat" viewBox="0 0 24 24"><path d="m7 3 2 10h9v5H7L4 5M7 18l-2 3m13-3 2 3M12 4h4v4h-4z"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1 1m12 12 1 1M5 19l1-1M18 6l1-1"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 7h5l2-3h4l2 3h5v13H3z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  </defs></svg>
+  <a class="skip-link" href="#showroom">Skip to showroom</a>
+  <header class="site-header">
+    <a class="wordmark" href="./" aria-label="Atelier Motor home"><span class="brand-mark">a<span>m</span></span><span>ATELIER<span class="brand-sub">MOTOR</span></span></a>
+    <nav aria-label="Main navigation"><button class="nav-link active" id="collection-open">The collection <span>04</span></button><button class="nav-link" data-dialog="about-dialog">The experience</button></nav>
+    <button class="visit-button" data-dialog="help-dialog">Make yourself at home <svg><use href="#i-arrow"/></svg></button>
+  </header>
+
+  <main id="showroom" class="showroom" aria-label="Interactive car showroom">
+    <div class="scene-heading"><p class="eyebrow"><span class="live-dot"></span> THE DIGITAL SHOWROOM</p><h1>A different perspective.</h1><p>Extraordinary machines. Yours to explore.</p></div>
+    <div class="model-title" aria-hidden="true"><span id="backdrop-brand">FERRARI</span><span id="backdrop-name">458 Italia</span></div>
+    <div id="canvas-container" class="canvas-container"><canvas id="scene-canvas" tabindex="0" aria-label="3D car. Drag to orbit, scroll to zoom. Arrow keys rotate; plus and minus zoom; Home resets. Interior mode: drag or use arrow keys to look around."></canvas></div>
+    <div class="scene-loading" id="scene-loading" role="status"><span class="loader-ring"></span><span id="loading-label">Preparing your showroom…</span><span class="load-track"><span id="load-progress"></span></span></div>
+    <div class="scene-error" id="scene-error" hidden><p class="eyebrow">LET’S TRY THAT AGAIN</p><h2>The showroom couldn’t load.</h2><p id="error-message">Check your connection and try again.</p><button class="pill dark" id="retry-load">Reload showroom <svg><use href="#i-reset"/></svg></button></div>
+
+    <aside class="vehicle-info edge-panel" aria-label="Selected vehicle">
+      <span class="tiny-label"><span id="car-index">01</span> / THE COLLECTION</span>
+      <h2 id="car-name">Ferrari<br>458 Italia</h2>
+      <p id="car-description">Italian expression.<br>From every angle.</p>
+      <button class="text-button" data-dialog="details-dialog">Discover the car <span>↗</span></button>
+      <div class="finish-block"><span class="tiny-label">EXTERIOR FINISH</span><div class="swatches" role="group" aria-label="Exterior paint colour">
+        <button class="swatch selected" data-color="#b52e22" data-name="Rosso" style="--swatch:#b52e22" aria-label="Rosso red" aria-pressed="true"></button>
+        <button class="swatch" data-color="#d3cbb4" data-name="Champagne" style="--swatch:#d3cbb4" aria-label="Champagne" aria-pressed="false"></button>
+        <button class="swatch" data-color="#384f43" data-name="Forest" style="--swatch:#384f43" aria-label="Forest green" aria-pressed="false"></button>
+        <button class="swatch" data-color="#303538" data-name="Graphite" style="--swatch:#303538" aria-label="Graphite" aria-pressed="false"></button>
+        <button class="swatch" data-color="#dce0df" data-name="Glacier" style="--swatch:#dce0df" aria-label="Glacier silver" aria-pressed="false"></button>
+      </div><span class="finish-name" id="finish-name">Rosso <span>· Gloss finish</span></span></div>
+    </aside>
+
+    <aside class="view-controls edge-panel" aria-label="Showroom controls">
+      <span class="tiny-label">YOUR PERSPECTIVE</span>
+      <div class="view-switch" role="group" aria-label="View mode"><button class="view-button selected" data-view="exterior" aria-pressed="true"><svg><use href="#i-orbit"/></svg><span>Exterior</span><span class="selection-dot"></span></button><button class="view-button" data-view="interior" aria-pressed="false"><svg><use href="#i-seat"/></svg><span>Interior</span><span class="selection-dot"></span></button></div>
+      <button class="setting-button" id="rotate-button" aria-pressed="false"><svg><use href="#i-orbit"/></svg><span>Auto rotate</span><span class="toggle"></span></button>
+      <button class="setting-button" id="light-button" aria-pressed="false"><svg><use href="#i-sun"/></svg><span id="light-label">Daylight</span><span class="light-indicator"></span></button>
+      <button class="setting-button" id="reset-button"><svg><use href="#i-reset"/></svg><span>Reset view</span></button>
+      <div class="utilities"><button class="icon-button" id="snapshot-button" aria-label="Save a picture" title="Save a picture"><svg><use href="#i-camera"/></svg></button><button class="icon-button" id="fullscreen-button" aria-label="Enter fullscreen" title="Fullscreen"><svg><use href="#i-expand"/></svg></button><button class="icon-button help-button" data-dialog="help-dialog" aria-label="Showroom controls help">?</button></div>
+    </aside>
+
+    <div class="camera-strip" role="group" aria-label="Camera angles"><span class="tiny-label" id="camera-label">FIND YOUR ANGLE</span><button class="angle-button selected" data-angle="hero" aria-pressed="true">Signature</button><button class="angle-button" data-angle="front" aria-pressed="false">Front</button><button class="angle-button" data-angle="side" aria-pressed="false">Side</button><button class="angle-button" data-angle="rear" aria-pressed="false">Rear</button></div>
+    <div class="scene-caption"><span class="orbit-symbol">↔</span><span id="gesture-hint">Drag to explore <span>·</span> Scroll to get closer</span></div>
+    <div class="zoom-controls"><button class="icon-button" id="zoom-out" aria-label="Zoom out"><svg><use href="#i-minus"/></svg></button><span>ZOOM</span><button class="icon-button" id="zoom-in" aria-label="Zoom in"><svg><use href="#i-plus"/></svg></button></div>
+    <div class="scene-number" aria-hidden="true">EST. FOR THE CURIOUS — 004</div>
+  </main>
+
+  <section class="collection-dock" id="collection" aria-labelledby="collection-heading">
+    <div class="collection-intro"><span class="tiny-label">A STUDY IN AUTOMOTIVE DESIGN</span><h2 id="collection-heading">Choose your curiosity.</h2><span>Four characters. Every perspective.</span></div>
+    <div class="car-options" role="group" aria-label="Choose a car">
+      <button class="car-card selected" data-car="ferrari" aria-pressed="true"><span class="car-thumbnail"><img src="assets/ferrari-thumb.webp" alt="" width="180" height="90"></span><span class="car-card-text"><span class="tiny-label">01 / THE ITALIAN ICON</span><strong>Ferrari 458 Italia</strong><span>Sculpted for the senses</span></span><span class="card-select">↗</span></button>
+      <button class="car-card" data-car="concept" aria-pressed="false"><span class="car-thumbnail"><img src="assets/concept-thumb.webp" alt="" width="180" height="90"></span><span class="car-card-text"><span class="tiny-label">02 / THE FUTURE STUDY</span><strong>Khronos Concept</strong><span>A new design language</span></span><span class="card-select">↗</span></button>
+      <button class="car-card" data-car="porsche" aria-pressed="false"><span class="car-thumbnail"><img src="assets/porsche-thumb.webp" alt="" width="180" height="90"></span><span class="car-card-text"><span class="tiny-label">03 / THE TIMELESS CLASSIC</span><strong>Porsche 911 Turbo</strong><span>An enduring silhouette</span></span><span class="card-select">↗</span></button>
+      <button class="car-card" data-car="bmw" aria-pressed="false"><span class="car-thumbnail"><img src="assets/bmw-thumb.webp" alt="" width="180" height="90"></span><span class="car-card-text"><span class="tiny-label">04 / THE DRIVER’S COUPE</span><strong>BMW M3 E36</strong><span>Purposeful proportions</span></span><span class="card-select">↗</span></button>
+    </div>
+  </section>
+  <footer><span>TAKE YOUR TIME. LOOK A LITTLE CLOSER.</span><span>Independent digital concept <span class="footer-dot">·</span> <button data-dialog="credits-dialog">Credits & models ↗</button></span></footer>
+
+  <dialog id="details-dialog"><div class="dialog-top"><span class="tiny-label">IN THE COLLECTION</span><button class="icon-button close-dialog" aria-label="Close details"><svg><use href="#i-close"/></svg></button></div><h2 id="detail-name">Ferrari 458 Italia</h2><p id="detail-description"></p><dl id="detail-specs"></dl><p class="dialog-note">Explore this digital study from outside or take a seat inside. Paint finishes are visual explorations.</p><button class="pill dark" id="detail-interior">Take the driver’s seat <svg><use href="#i-arrow"/></svg></button></dialog>
+  <dialog id="help-dialog"><div class="dialog-top"><span class="tiny-label">MAKE YOURSELF AT HOME</span><button class="icon-button close-dialog" aria-label="Close help"><svg><use href="#i-close"/></svg></button></div><h2>You’re in the driver’s seat.</h2><p>No route. No rush. Just you and the details.</p><dl class="help-list"><div><dt>Look around</dt><dd>Drag the car with a mouse or one finger. In the cabin, drag to turn your head.</dd></div><div><dt>Get closer</dt><dd>Scroll, pinch, or use the + / − buttons. In the cabin, these adjust your field of view.</dd></div><div><dt>Use your keyboard</dt><dd>Focus the scene, then use arrow keys to look around, + / − to zoom, and Home to reset.</dd></div><div><dt>Make it yours</dt><dd>Pick a finish, change the lighting, and save a picture with the camera button.</dd></div></dl></dialog>
+  <dialog id="about-dialog"><div class="dialog-top"><span class="tiny-label">THE EXPERIENCE</span><button class="icon-button close-dialog" aria-label="Close experience"><svg><use href="#i-close"/></svg></button></div><h2>A space for<br>pure curiosity.</h2><p>Atelier Motor is an independent digital showroom. An invitation to slow down, move around, and appreciate the shapes that make a car extraordinary.</p><p>Four distinct machines share a single stage. Change the finish, follow a body line, or step into the cabin. There’s no wrong place to look.</p><p class="dialog-note">Day 04 of a daily creative development series. A design exploration, with no affiliation to the featured manufacturers.</p></dialog>
+  <dialog id="credits-dialog">
+    <div class="dialog-top"><span class="tiny-label">CRAFT & CREDITS</span><button class="icon-button close-dialog" aria-label="Close credits"><svg><use href="#i-close"/></svg></button></div>
+    <h2>Built on good work.</h2>
+    <p><strong>Ferrari 458 Italia</strong><br>Model by <a href="https://sketchfab.com/models/57bf6cc56931426e87494f554df1dab6" target="_blank" rel="noopener">vicent091036</a>, distributed through the Three.js examples. CC BY 4.0.</p>
+    <p><strong>Car Concept</strong><br>Eric Chadwick / Darmstadt Graphics Group GmbH (2024), based on a public-domain model by Unity Fan. <a href="https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept" target="_blank" rel="noopener">Khronos glTF Sample Assets</a>. CC BY 4.0.</p>
+    <p><strong>Porsche 911 (930) Turbo</strong><br>Model by <a href="https://sketchfab.com/3d-models/8568d9d14a994b9cae59499f0dbed21e" target="_blank" rel="noopener">Lionsharp Studios</a>. CC BY 4.0.</p>
+    <p><strong>BMW M3 E36</strong><br>Model by <a href="https://sketchfab.com/3d-models/762b90efd3dc413cb61c3e3c8097b8ac" target="_blank" rel="noopener">Martin Trafas</a>. CC BY 4.0.</p>
+    <p>The Porsche and BMW are distributed in optimized form through the <a href="https://github.com/pedrosoandre/carros" target="_blank" rel="noopener">carros collection</a>. Their source display floors are removed; cabin materials and paint are adjusted. Porsche paint normals are recalculated.</p>
+    <p class="dialog-note">Models are rescaled and relit, with editable paint materials. Model licenses: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0</a>. Logos and trademarks belong to their owners. Three.js renders the scene; GSAP moves the cameras; Velocity.js animates the interface. DM Sans by Colophon Foundry.</p>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="sr-only" id="announcement" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript">This interactive showroom needs JavaScript enabled to display the cars and controls.</div></noscript>
+</body>
+</html>

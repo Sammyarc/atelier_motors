@@ -1,0 +1,14 @@
+{
+  "name": "atelier-motor-showroom",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "check": "node --check script.js && node --check showroom.js",
+    "verify": "node scripts/verify.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2"
+  }
+}

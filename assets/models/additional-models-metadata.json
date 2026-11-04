@@ -1,0 +1,57 @@
+{
+  "source": "https://github.com/pedrosoandre/carros",
+  "models": [
+    {
+      "id": "bmw-e36-m3",
+      "brand": "BMW",
+      "model": "E36 M3",
+      "years": [
+        0,
+        0
+      ],
+      "category": "coupe",
+      "file": "bmw-e36-m3.glb",
+      "bytes": 2543508,
+      "paint": {
+        "materials": [
+          "CarPaint"
+        ],
+        "textured": false,
+        "confidence": "média"
+      },
+      "credit": {
+        "author": "Martin Trafas",
+        "authorUrl": "https://sketchfab.com/TinoD2",
+        "license": "CC Attribution",
+        "sourceName": "BMW E36 M3",
+        "sourceUrl": "https://sketchfab.com/3d-models/none-762b90efd3dc413cb61c3e3c8097b8ac"
+      }
+    },
+    {
+      "id": "porsche-911-930",
+      "brand": "Porsche",
+      "model": "911 930",
+      "years": [
+        1975,
+        1975
+      ],
+      "category": "sports",
+      "file": "porsche-911-930.glb",
+      "bytes": 13975288,
+      "paint": {
+        "materials": [
+          "paint"
+        ],
+        "textured": false,
+        "confidence": "média"
+      },
+      "credit": {
+        "author": "Lionsharp Studios",
+        "authorUrl": "https://sketchfab.com/lionsharp",
+        "license": "CC Attribution",
+        "sourceName": "FREE 1975 Porsche 911 (930) Turbo",
+        "sourceUrl": "https://sketchfab.com/3d-models/none-8568d9d14a994b9cae59499f0dbed21e"
+      }
+    }
+  ]
+}
